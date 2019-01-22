@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{action}} note</h1>
+<div mat-dialog-content>
+  <p style='display: none'>id</p>
+  <input style='display: none' [(ngModel)]="data.id">
+  <p>Name</p>
+  <mat-form-field>
+    <input matInput #input maxlength="60" [(ngModel)]="data.name">
+    <mat-hint align="end">{{input.value?.length || 0}}/60</mat-hint>
+  </mat-form-field>
+  <p>Priority</p>
+  <mat-form-field>
+    <mat-select [(ngModel)]="data.priority">
+      <mat-option *ngFor="let opt of options" [value]="opt.value">
+        {{opt.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Date</p>
+  <mat-form-field>
+<input matInput [(ngModel)]="data.date" [matDatepicker]="picker" placeholder="Choose a date" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+<mat-datepicker #picker disabled="false"></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="showDeleteBtn" mat-button (click)="onNoClick()">Delete</button>
+<button mat-button (click)="onOkClick()">{{action}}</button>
+</div>

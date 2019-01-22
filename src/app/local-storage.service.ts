@@ -68,7 +68,7 @@ export class LocalStorageService {
       const nName = parsedNotes[i].name;
       const nId = parsedNotes[i].id;
       let nPriority = parsedNotes[i].priority;
-      classedNotes.push(new note(nId, nName, nPriority, nDate)
+      classedNotes.push(new note(nId, nName, nPriority, nDate))
     }
     return classedNotes;
 
